@@ -6,22 +6,30 @@ This repo contains an aggregated dataset containing baby name data for 8 English
 
 A compilation of most available baby name data:
 
-Australia (1935-2023)
-Canada (1991-2023)
-England and Wales (1996-2023)
-Ireland (1964-2023)
-Northern Ireland (1997-2023)
-New Zealand (1935-2023)
-Scotland (1974-2023)
-USA (1910-2023)
+* Australia (1935-2023)
+* Canada (1991-2023)
+* England and Wales (1996-2023)
+* Ireland (1964-2023)
+* Northern Ireland (1997-2023)
+* New Zealand (1935-2023)
+* Scotland (1974-2023)
+* USA (1910-2023)
 
 ## metrics-and-summary.csv
 
-Summary statistics for the name data, including averages, country where the name is most popular, and "countryness" - a measure of how much more popular the name is in the country where it is most popular than it is in the rest of the world. (Think, Saoirse in Ireland or Lachlan in Australia)
+Summary statistics for the name data, including averages, country where the name is most popular, and "countryness". 
+
+### The countryness Metric
+
+The countryness metric is a measure of relative popularity of the name. It is the number of times more popular the name is in the country where it is most popular than it is anywhere else in the anglosphere. ie. suppose you take a random kid born in 2003 named Kyle. Kyle was most popular in Scotland in 2003, and it is 4.15x more likely that the Kyle you chose was Scottish than any of the other 7 regions, therefore the "countryness" score is 4.15.
+
+$\text{countryness of a name} = \frac{\text{proportion of babies with that name in the country in which it is most common}}{\text{proportion of babies with that name in the rest of the anglosphere}}$
 
 ## summary-1997-2023.csv
 
-For the 27 year period that all 8 regions have data (1997-2023 inclusive), this table summarizes the names for the entire span, and calculates the country-ness. Countryness is computed as "proportion of babies of this gender with this name in the max country over the 27 year period"/"proportion of babies of this gender with this name in the other 7 countries over the 27 year period". A country can only be considered the "max_country" if it used the name in at least 5 different years over the 27 year period, and only names which were used in at least 2 different countries were included in this dataset.
+For the 27 year period that all 8 regions have data (1997-2023 inclusive), this table summarizes the names for the entire span, and calculates the country-ness. Countryness is computed as
+$\text{countryness of a name} = \frac{\text{proportion of babies of this gender with this name in the max country over the 27 year period}}{\text{proportion of babies of this gender with this name in the other 7 countries over the 27 year period}}$
+A country can only be considered the "max_country" if it used the name in at least 5 different years over the 27 year period, and only names which were used in at least 2 different countries were included in this dataset.
 
 ## Limitations and Notes:
 
@@ -35,12 +43,6 @@ Also:
 * The USA does not preserve hyphens in given names, while all other countries do. It also cuts off the length of names at 15 letters.
 * Only New Zealand and Ireland preserve accented letters in their datasets. All other countries would, for example, report the name "Zoë" or "Zoé" as Zoe. My data set does not change these.
 * Most countries do not preserve the capitalization of the given names, so "Mackenzie" and "MacKenzie" would be reported as the same name. For simplicity, I adjusted all names so that only the initial letter was capitalised, so Mary-Jane and MARY-JANE were changed to Mary-jane. In countries that did preserve capitalization, I combined the entries so they would match the style of the other countries.
-
-## The countryness Metric
-
-The countryness metric is a measure of relative popularity of the name. It is the number of times more popular the name is in the country where it is most popular than it is anywhere else in the anglosphere. ie. suppose you take a random kid born in 2003 named Kyle. Kyle was most popular in Scotland in 2003, and it is 4.15x more likely that the Kyle you chose was Scottish than any of the other 7 regions, therefore the "countryness" score is 4.15.
-
-$\text{countryness of a name} = \frac{\text{proportion of babies with that name in the country in which it is most common}}{\text{proportion of babies with that name in the rest of the anglosphere}}$
 
 ## Sample Usage
 
